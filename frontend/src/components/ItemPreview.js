@@ -29,6 +29,8 @@ const ItemPreview = (props) => {
     }
   };
 
+  const DEFUALT_IMG_URL = "/placeholder.png";
+
   return (
     <div
       className="card bg-dark border-light p-3"
@@ -36,7 +38,7 @@ const ItemPreview = (props) => {
     >
       <img
         alt="item"
-        src={item.image}
+        src={item.image || DEFUALT_IMG_URL}
         className="card-img-top item-img"
         style={{ borderRadius: "20px" }}
       />
@@ -54,7 +56,7 @@ const ItemPreview = (props) => {
             />
           </Link>
           <button className="btn btn-outline-secondary" onClick={handleClick}>
-            <i className="ion-heart"></i> {item.favoritesCount}
+            <i className="ion-heart" /> {item.favoritesCount}
           </button>
         </div>
       </div>
