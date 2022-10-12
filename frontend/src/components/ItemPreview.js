@@ -4,23 +4,23 @@ import agent from "../agent";
 import { connect } from "react-redux";
 import { ITEM_FAVORITED, ITEM_UNFAVORITED } from "../constants/actionTypes";
 
-const mapDispatchToProps = (dispatch) => ({
-  favorite: (slug) =>
+const mapDispatchToProps = dispatch => ({
+  favorite: slug =>
     dispatch({
       type: ITEM_FAVORITED,
-      payload: agent.Items.favorite(slug),
+      payload: agent.Items.favorite(slug)
     }),
-  unfavorite: (slug) =>
+  unfavorite: slug =>
     dispatch({
       type: ITEM_UNFAVORITED,
-      payload: agent.Items.unfavorite(slug),
-    }),
+      payload: agent.Items.unfavorite(slug)
+    })
 });
 
-const ItemPreview = (props) => {
+const ItemPreview = props => {
   const item = props.item;
 
-  const handleClick = (ev) => {
+  const handleClick = ev => {
     ev.preventDefault();
     if (item.favorited) {
       props.unfavorite(item.slug);
@@ -29,7 +29,7 @@ const ItemPreview = (props) => {
     }
   };
 
-  const DEFUALT_IMG_URL = "/placeholder.png"
+  const DEFUALT_IMG_URL = "/placeholder.png";
 
   return (
     <div
@@ -56,7 +56,7 @@ const ItemPreview = (props) => {
             />
           </Link>
           <button className="btn btn-outline-secondary" onClick={handleClick}>
-            <i className="ion-heart"></i> {item.favoritesCount}
+            <i className="ion-heart" /> {item.favoritesCount}
           </button>
         </div>
       </div>
