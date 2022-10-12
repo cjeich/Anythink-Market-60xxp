@@ -10,4 +10,40 @@ When implementing a new feature or fixing a bug, please create a new pull reques
 
 ## First setup
 
-**[TODO 05/01/2018 @vanessa-cooper]:** _It's been a while since anyone ran a fresh copy of this repo. I think it's worth documenting the steps needed to install and run the repo on a new machine?_
+0. Download the repository and cd into the directory
+```
+$ git clone  git clone git@github.com:<github-username>/Anythink-Market-60xxp.git
+$ cd Anythink-Market-60xxp
+```
+
+### 1. Start Docker
+```bash
+$ docker compose up
+```
+
+### 2. Navigate to backend API
+http://localhost:3000/api/ping
+
+### 3. Run Rails Migrations
+Click run migrations in UI
+
+or
+
+start a shell in the docker image:
+
+```bash
+$ docker exec -it anythink-backend bash
+$ cd backend
+$ rails db:migrate
+
+# check all migrations have run
+$ rails db:migrate:status
+```
+
+### 4. Check that the front end is working
+
+Go to: http://localhost:3001/register
+
+You should see the site login page!
+
+### 5. Create a user and log in.
