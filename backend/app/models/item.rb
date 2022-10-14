@@ -1,5 +1,20 @@
 # frozen_string_literal: true
 
+# == Schema Information
+#
+# Table name: items
+#
+#  id              :integer          not null, primary key
+#  title           :string
+#  slug            :string
+#  description     :string
+#  image           :string
+#  favorites_count :integer
+#  user_id         :integer
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#
+
 class Item < ApplicationRecord
   belongs_to :user
   has_many :favorites, dependent: :destroy
@@ -18,7 +33,7 @@ class Item < ApplicationRecord
     self.slug ||= "#{title.to_s.parameterize}-#{rand(36**6).to_s(36)}"
   end
 
-  def image_url
+  def image
     super || "/placeholder.png"
   end
 end
